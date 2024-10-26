@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="assets/plugins/bootstrap-4.6.1-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/plugins/fontawesome-free-5.15.4-web/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
+
+    <title>PIN autokuća - Login</title>
+    
+  </head>
+  
+  
+    <script src="assets/plugins/jquery/jquery-3.6.0.min.js"></script>
+    <script src="assets/plugins/bootstrap-4.6.1-dist/js/bootstrap.bundle.min.js"></script>
+
+    <body>
+      <nav class="navbar navbar-expand-lg" style="background-color: #800020;">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <a style="color: white;" class="navbar-brand" href="#">Auto kuća PIN</a>
+      
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+          <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="nav-item active">
+              <a class="nav-link" style="color: red;" href="/glavnastranica.html">Dostupna vozila <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" style="color: white" href="/iznajmljenavozila.html">Iznajmljena vozila <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" style="color: white;" href="/prodanavozila.html">Prodana vozila <span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item active">
+                <a class="nav-link" style="color: white;" href="/korisnici.html">Korisnici<span class="sr-only">(current)</span></a>
+              </li>
+ 
+            </li>
+          </ul>
+      
+          <ul class="navbar-nav ml-auto">
+            <div class="btn-group">
+                <button type="button" class="btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: white;";>
+                  <i class="fas fa-user"></i> 
+                </button>
+                <div class="dropdown-menu dropdown-menu-right">
+                  <button class="dropdown-item" data-toggle="modal" data-target="#modal1" type="button">Odjava</button>    
+                        
+                </div>
+              </div>
+              
+              </div>
+              
+          </ul>
+        </div>
+        <div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog d-flex justify-content-center align-items-center" role="document">
+              <div class="modal-content">
+                <div class=" d-flex justify-content-center align-items-center" style="margin-top: 30px; margin-bottom: 20px;">
+                  <h5 class="modal-title" id="exampleModalLabel">Odjava</h5>
+                </div>
+                <div class="d-flex justify-content-center align-items-center">
+                  <p>Jeste li sigurni da se želite odjaviti?</p>
+                </div>
+                <div class="modal-body d-flex justify-content-center">
+                  <button type="button" class="btn btn-secondary mr-2" data-dismiss="modal">Zatvori</button>
+                  <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="odjava()">Odjavi se</button>
+                </div>
+              </div>
+            </div>
+          </div>
+      </nav>
+     
+<div class="container">
+  <button class="btn btn-danger" data-toggle="modal" data-target="#upozorenje-modal" type="button">TEST</button>
+  <button class="btn btn-sm btn-success" data-toggle="modal" data-target="#dodaj-korisnika" style="font-size: 20px;">Dodaj korisnika <i class="fas fa-solid fa-triangle-exclamation"></i></button>
+  <i class="fa-solid fa-triangle-exclamation"></i>
+</div>
+<i class="fa-brands fa-instagram"></i>
+<div class="modal fade" id="upozorenje-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+          <div class="modal-header text-center d-flex flex-column align-items-center">
+              <h5 class="modal-title" style="font-size: 30px;" id="exampleModalLabel">Upozorenje</h5>       
+                  <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+          <div class="modal-body d-flex flex-column align-items-center">
+              <div class="form-group">
+                <p style="font-size: 30px;">Nisu popunjena sva polja forme</p>
+                <p style="font-size: 30px;">Molimo popunite sva polja forme</p>
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">U redu</button>
+          </div>
+      </div>
+  </div>
+</div>
+   
+    </div>
+  </div>
+</div>
+      <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+      </script>
+      <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+    <script src="js/firebase_config.js"></script>
+    <script src="js/login.js"></script>
+    <script src="js/dostupnavozila.js"></script>
+
+  </body>
+</html>

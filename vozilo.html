@@ -1,0 +1,712 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="assets/plugins/bootstrap-4.6.1-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/plugins/fontawesome-free-5.15.4-web/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-Gn538bU0V1/bH9RQm6Xds15Jskuk9QcVxVR+ttTHq45I58iucvf0B/uGzZGapY6xZwM5l2d6n7Pz0s3ePpRfMIig==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="/css/style.css">
+
+    <title>AK-PIN - Profil vozila</title>
+  </head>
+    <script src="assets/plugins/jquery/jquery-3.6.0.min.js"></script>
+    <script src="assets/plugins/bootstrap-4.6.1-dist/js/bootstrap.bundle.min.js"></script>
+
+    <body style="background-color: #F8F8F8;">
+        <nav class="navbar navbar-expand-lg" style="background-color: 	#606060">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <a style="color: white;" class="navbar-brand" href="#"><img src="img/logo.png"></a>
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+              <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item active">
+                  <a class="nav-link" style="color: white;font-size: 22px;" href="/glavnastranica.html">Dostupna vozila <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+                  <a class="nav-link" style="color: white; font-size: 22px;"  href="/iznajmljenavozila.html">Iznajmljena vozila <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" style="color: white; font-size: 22px;" href="/prodanavozila.html">Prodana vozila <span class="sr-only">(current)</span></a>
+                  </li>
+                  <li class="nav-item active">
+                    <a class="nav-link" style="color: white; font-size: 22px;" href="/korisnici.html">Korisnici<span class="sr-only">(current)</span></a>
+                  </li>
+     
+                </li>
+              </ul>
+          
+              <ul class="navbar-nav ml-auto">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-lg" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: white;">
+                        <i class="fas fa-user"></i> 
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <button class="dropdown-item" data-toggle="modal" data-target="#modal1" type="button">Odjava</button>    
+                    </div>
+                </div>
+            </ul>
+            
+            </div>
+            <div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog d-flex justify-content-center align-items-center" role="document">
+                  <div class="modal-content">
+                    <div class=" d-flex justify-content-center align-items-center" style="margin-top: 30px; margin-bottom: 20px;">
+                      <h5 class="modal-title" id="exampleModalLabel">Odjava</h5>
+                    </div>
+                    <div class="d-flex justify-content-center align-items-center">
+                      <p>Jeste li sigurni da se želite odjaviti?</p>
+                    </div>
+                    <div class="modal-body d-flex justify-content-center">
+                      <button type="button" class="btn btn-secondary mr-2" data-dismiss="modal">Zatvori</button>
+                      <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="Logout()">Odjavi se</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </nav>
+
+          <div class="container-fluid mt-3 mb-3" style="width: 94%; padding-left: 30px; padding-right: 20px;">
+            <div class="row no-gutters" >
+              <div class="col-8" style="background-color: #000000; margin-top: 30px;">
+              </div>
+              <div class="container " style="background-color: #E8E8E8;">
+
+                <div id="slike" style="display: flex; flex-direction: column; align-items: center; padding-top: 10px;" class=" slike-container">
+                    <div style="cursor: pointer;" class="slika-wrapper">
+                        <img src="" alt="Prva slika" id="prvaSlika" onclick="veca(this)" class="img-thumbnail velika-slika rounded bg-transparent">
+                    </div>
+                    
+                 <div class="" style="display: flex;cursor: pointer;" id="albumSlika">
+
+                  </div>          
+             </div>                      
+              </div>
+            
+              <div class="col-4 text-center" style="background-color: #F0F0F0; padding-left: 20px; padding-right: 20px;">
+
+                <h id="marka" style="font-size: 40px;"></h>
+
+                <div class="container">
+                  <div class="row" style="background-color: #F0F0F0; color: #000000; margin-top: 30px;">
+                    <div class="col-xl-6 text-center mb-3" style="font-size: 20px; ">
+                        <h>Godina proizvodnje </h>
+                    </div>
+                    <div class="col-xl-6" style="font-size: 20px;">
+                        <h id="god"></h>
+                    </div>
+                </div>
+                <div class="row" style="background-color: #F0F0F0; color: #000000; margin-top: 1px;">
+                  <div class="col-xl-6 text-center mb-3" style="font-size: 20px;">
+                      <h>Mjenjač </h>
+                  </div>
+                  <div class="col-xl-6" style="font-size: 20px;">
+                      <h id="mjenjac"></h>
+                  </div>
+              </div>
+  
+              <div class="row" style="background-color: #F0F0F0; color: #000000; margin-top: 1px;">
+                <div class="col-xl-6 text-center mb-3" style="font-size: 20px;">
+                    <h>Obujam motora </h>
+                </div>
+                <div class="col-xl-6" style="font-size: 20px;">
+                    <h id="obujam"></h>
+                </div>
+              </div>
+  
+                <div class="row" style="background-color: #F0F0F0; color: #000000; margin-top: 1px;">
+              <div class="col-xl-6 text-center mb-3" style="font-size: 20px;">
+                   <h>Snaga motora </h>
+                </div>
+               <div class="col-xl-6" style="font-size: 20px;">
+                  <h id="snaga"></h>
+                 </div>
+                    </div>
+                          <div class="row" style="background-color: #F0F0F0; color: #000000; margin-top: 1px;">
+                            <div class="col-xl-6 text-center mb-3" style="font-size: 20px;">
+                                <h>Boja </h>
+                            </div>
+                            <div class="col-xl-6" style="font-size: 20px;">
+                                <h id="boja"></h>
+                            </div>
+                        </div>
+                        <div class="row" style="background-color: #F0F0F0; color: #000000; margin-top: 1px;">
+                          <div class="col-xl-6 text-center mb-3" style="font-size: 20px;">
+                              <h>Stanje </h>
+                          </div>
+                          <div class="col-xl-6" style="font-size: 20px;">
+                              <h id="stanje"></h>
+                          </div>
+                      </div>
+  
+                      <div class="row" style="background-color: #F0F0F0; color: #000000; margin-top: 1px;">
+                        <div class="col-xl-6 text-center mb-3" style="font-size: 20px;">
+                            <h>Broj vrata </h>
+                        </div>
+                        <div class="col-xl-6" style="font-size: 20px;">
+                            <h id="vrata"></h>
+                        </div>
+                    </div>
+  
+                    <div class="row" style="background-color: #F0F0F0; color: #000000; margin-top: 1px;">
+                      <div class="col-xl-6 text-center mb-3" style="font-size: 20px;">
+                          <h>Oblik karoserije </h>
+                      </div>
+                      <div class="col-xl-6" style="font-size: 20px;">
+                          <h id="oblik"></h>
+                      </div>
+                  </div>
+  
+                  <div class="row" style="background-color: #F0F0F0; color: #000000; margin-top: 1px;">
+                    <div class="col-xl-6 text-center mb-3" style="font-size: 20px;">
+                        <h>Gorivo </h>
+                    </div>
+                    <div class="col-xl-6" style="font-size: 20px;">
+                        <h id="gorivo"></h>
+                    </div>
+                  </div>
+                  <div class="row" style="background-color: #F0F0F0; color: #000000; margin-top: 1px;">
+                    <div class="col-xl-6 text-center mb-3" style="font-size: 20px;">
+                        <h>Istek registracije </h>
+                    </div>
+                    <div class="col-xl-6" style="font-size: 20px;">
+                        <h id="registracija"></h>
+                    </div>
+                  </div>
+  
+                  <div class="row" style="background-color: #F0F0F0; color: #000000; margin-top: 1px;">
+                    <div class="col-xl-6 text-center mb-3" style="font-size: 20px;">
+                        <h>Cijena</h>
+                    </div>
+                    <div class="col-xl-6" style="font-size: 20px;">
+                        <h id="cijena"></h>€
+                    </div>
+                  </div>
+                  <button type="button" onclick="urediVozilo()" data-toggle="modal" class="btn btn-primary btn-lg btn-block" style="margin-top: 20px; display: none;" id="btnuredi">Uredi</button>
+                  <button type="button" onclick="iznajmiVozilo()" data-toggle="modal" data-target="#iznajmi-auto" class="btn btn-success btn-lg btn-block" style="display: none;" id="btniznajmi">Iznajmi</button>
+                  <button type="button" onclick="prodajVoziloo()" data-toggle="modal" data-target="#prodaj-auto"class="btn btn-warning btn-lg btn-block" style="display: none;" id="btnprodaj">Prodaj</button>
+                  <button type="button" onclick="Obrisi()" data-toggle="modal" data-target="#obrisi-auto" class="btn btn-danger btn-lg btn-block" style="display: none;" id="btnobrisi">Obriši vozilo</button>
+                  <button type="button" onclick="Prekini()" data-toggle="modal" class="btn btn-secondary btn-lg btn-block" style="display: none;" id="prekininajam">Prekini najam</button>
+                  <button type="button" id="prodano" style="display: none;" class="btn btn-danger btn-lg btn-block" disabled>Vozilo je prodano</button>
+                  
+                  <div class="row d-none" id="e1" style="background-color: #F0F0F0; color: #000000; margin-top: 20px;">
+                    <div class="col-xl-6 text-center mb-3" style="font-size: 20px;">
+                        <h>Kupac </h>
+                    </div>
+                    <div class="col-xl-6" style="font-size: 20px;">
+                        <h id="vamokupac"></h>
+                    </div>
+                </div>
+
+                <div class="row d-none" id="e2" style="background-color: #F0F0F0; color: #000000; margin-top: 1px;">
+                  <div class="col-xl-6 text-center mb-3" style="font-size: 20px;">
+                      <h>Datum prodaje </h>
+                  </div>
+                  <div class="col-xl-6" style="font-size: 20px;">
+                      <h id="vamodatum"></h>
+                  </div>
+              </div>
+              <div class="row d-none" id="e3" style="background-color: #F0F0F0; color: #000000; margin-top: 1px;">
+                <div class="col-xl-6 text-center mb-3" style="font-size: 20px;">
+                    <h>Prodajna cjena </h>
+                </div>
+                <div class="col-xl-6" style="font-size: 20px;">
+                    <h id="vamocjena"></h>
+                </div>
+            </div>
+            <a></a>
+           
+            <div class="row d-none" id="q1" style="background-color: #F0F0F0; color: #000000; margin-top: 20px;">
+              <div class="col-xl-6 text-center mb-3" style="font-size: 20px;">
+                  <h>Iznajmio</h>
+              </div>
+              <div class="col-xl-6" style="font-size: 20px;">
+                  <h id="vamonajamnik"></h>
+              </div>
+          </div>
+
+          <div class="row d-none" id="q2" style="background-color: #F0F0F0; color: #000000; margin-top: 1px;">
+            <div class="col-xl-6 text-center mb-3" style="font-size: 20px;">
+                <h>Cijena najma </h>
+            </div>
+            <div class="col-xl-6" style="font-size: 20px;">
+                <h id="vamocijenanajma"></h>
+            </div>
+        </div>
+        <div class="row d-none" id="q4" style="background-color: #F0F0F0; color: #000000; margin-top: 1px;">
+          <div class="col-xl-6 text-center mb-3" style="font-size: 20px;">
+              <h>Datum izdaje najma</h>
+          </div>
+          <div class="col-xl-6" style="font-size: 20px;">
+              <h id="vamorok"></h>
+          </div>
+      </div>
+        
+        <div class="row d-none" id="q3" style="background-color: #F0F0F0; color: #000000; margin-top: 1px;">
+          <div class="col-xl-6 text-center mb-3" style="font-size: 20px;">
+              <h>Datum kraja najma</h>
+          </div>
+          <div class="col-xl-6" style="font-size: 20px;">
+              <h id="vamoizdaja"></h>
+          </div>
+          
+  </div>
+  <div class="row" id="racuni" style="background-color: #F0F0F0; color: #000000; margin-top: 1px;">
+    <div class="col-xl-6 text-center mb-3" style="font-size: 20px;">
+      <button type="button" onclick="window.open('https://www.clickdimensions.com/links/TestPDFfile.pdf', '_blank')" data-toggle="modal" class="btn btn-secondary btn-lg btn-block" style="display: none;" id="racun1">PDF Racun</button>
+    </div>
+    <div class="col-xl-6" style="font-size: 20px;">
+      <button type="button" onclick="window.open('https://www.clickdimensions.com/links/TestPDFfile.pdf', '_blank')" data-toggle="modal" class="btn btn-secondary btn-lg btn-block" style="display: none;" id="racun2">PDF Ugovor</button> 
+    </div>
+</div>
+</div>
+</div>
+
+
+
+    
+<div class="modal fade" id="uredi-auto" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+      <div class="modal-content ">
+        <div class="modal-header text-center">
+          <h5 class="modal-title" id="exampleModalLabel">Uredi vozilo</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+          <div class="modal-body">
+              <div class="row">
+                  <div class="col-md-6">
+                      <div class="form-group">
+                          <label for="inptmarkae">Marka</label>
+                          <div class="input-group">
+                              <select class="form-control" id="inptmarkae" onchange="custommarka(this)">
+                                  <option value="">Odaberi marku</option>
+                                  <option value="Alfa Romeo">Alfa Romeo</option>
+                                  
+                                  <option value="Alfa Romeo">Alfa Romeo</option>
+                                  <option value="Aston Martin">Aston Martin</option>
+                                  <option value="Audi">Audi</option>
+                                  <option value="Bentley">Bentley</option>
+                                  <option value="BMW">BMW</option>
+                                  <option value="Bugatti">Bugatti</option>
+                                  <option value="Cadillac">Cadillac</option>
+                                  <option value="Chevrolet">Chevrolet</option>
+                                  <option value="Citroen">Citroen</option>
+                                  <option value="Dacia">Dacia</option>
+                                  <option value="Dodge">Dodge</option>
+                                  <option value="Ferrari">Ferrari</option>
+                                  <option value="Fiat">Fiat</option>
+                                  <option value="Ford">Ford</option>
+                                  <option value="Honda">Honda</option>
+                                  <option value="Hyundai">Hyundai</option>
+                                  <option value="Infinity">Infinity</option>
+                                  <option value="Isuzu">Isuzu</option>
+                                  <option value="Jaguar">Jaguar</option>
+                                  <option value="Jeep">Jeep</option>
+                                  <option value="Kia">Kia</option>
+                                  <option value="Koenigsegg">Koenigsegg</option>
+                                  <option value="Lada">Lada</option>
+                                  <option value="Lamborghini">Lamborghini</option>
+                                  <option value="Land Rover">Land Rover</option>
+                                  <option value="Lancia">Lancia</option>
+                                  <option value="Lexus">Lexus</option>
+                                  <option value="Lotus">Lotus</option>
+                                  <option value="Maserati">Maserati</option>
+                                  <option value="Mazda">Mazda</option>
+                                  <option value="McLaren">McLaren</option>
+                                  <option value="Mercedes">Mercedes</option>
+                                  <option value="Mitsubischi">Mitsubischi</option>
+                                  <option value="Nissan">Nissan</option>
+                                  <option value="Opel">Opel</option>
+                                  <option value="Pagani">Pagani</option>
+                                  <option value="Peugeot">Peugeot</option>
+                                  <option value="Porsche">Porsche</option>
+                                  <option value="Renault">Renault</option>
+                                  <option value="Rimac">Rimac</option>
+                                  <option value="Rolls-Royce">Rolls-Royce</option>
+                                  <option value="Smart">Smart</option>
+                                  <option value="Suzuki">Suzuki</option>
+                                  <option value="Tesla">Tesla</option>
+                                  <option value="Toyota">Toyota</option>
+                                  <option value="Volkswagen">Volkswagen</option>
+                                  <option value="Volvo">Volvo</option>
+                                  <option value="other">Drugo</option>
+                              </select>
+                              <div id="ccustommarka" class="input-group-append" style="display: none;">
+                                  <input type="text" class="form-control" id="inptcustommarkae" placeholder="Unesite vlastitu marku">
+                              </div>
+                          </div>
+                      </div>
+
+                      <div class="form-group">
+                          <label for="inptgodina_proizvodnjee">Godina proizvodnje :</label>
+                          <input type="text" class="form-control" id="inptgodina_proizvodnjee">
+                      </div>
+
+                      <div class="form-group">
+                          <label for="inptsnagamotorae">Snaga motora</label>
+                          <input type="text" class="form-control" id="inptsnagamotorae">
+                      </div>
+
+                      <div class="form-group">
+                          <label for="inptvratae">Broj vrata</label>
+                          <select class="form-control" id="inptvratae">
+                              <option value="">Odaberi broj vrata</option>
+                              <option value="2">2</option>
+                              <option value="3">3</option>
+                              <option value="4">4</option>
+                              <option value="5">5</option>
+                          </select>
+                      </div>
+
+                      <div class="form-group">
+                          <label for="inptbojae">Boja</label>
+                          <select class="form-control" id="inptbojae">
+                              <option value="">Odaberi boju</option>
+                              <option value="Bijela">Bijela</option>
+                              <option value="Crna">Crna</option>
+                              <option value="Siva">Siva</option>
+                              <option value="Crvena">Crvena</option>
+                              <option value="Zelena">Zelena</option>
+                              <option value="Ljubičasta">Ljubičasta</option>
+                              <option value="Plava">Plava</option>
+                          </select>
+                      </div>
+                      <div class="form-group">
+                        <label for="inptregistracijae">Registriran do:</label>
+                        <input type="text" class="form-control" id="inptregistracijae">
+                    </div>
+                    <div class="form-group">
+                      <label for="inptoblikke">Oblik karoserije</label>
+                      <select class="form-control" id="inptoblikke">
+                          <option value="Sedan">Sedan</option>
+                          <option value="Coupe">Coupe</option>
+                          <option value="Karavan">Karavan</option>
+                      </select>
+                  </div>
+                
+                    <div class="form-group">
+                      <label for="files">Dodaj slike vozila</label>
+                      <input type="file" name="files[]" multiple class="form-control-file" id="files">
+
+                  </div>
+                
+                  </div>
+
+                  <div class="col-md-6">
+                     
+                      <div class="form-group">
+                          <label for="inptmodele">Model</label>
+                          <input type="text" class="form-control" id="inptmodele">
+                      </div>
+
+                      <div class="form-group">
+                          <label for="inptstanjee">Stanje</label>
+                          <select class="form-control" id="inptstanjee">
+                              <option value="">Odaberi stanje vozila</option>
+                              <option value="Novo">Novo</option>
+                              <option value="Rabljeno">Rabljeno</option>
+                          </select>
+                      </div>
+
+                      <div class="form-group">
+                          <label for="inptobujame">Obujam</label>
+                          <input type="text" class="form-control" id="inptobujame">
+                      </div>
+
+                      <div class="form-group">
+                          <label for="inptmjenjace">Mjenjač</label>
+                          <select class="form-control" id="inptmjenjace">
+                              <option value="">Odaberi vrstu mjenjača</option>
+                              <option value="Automatski">Automatski</option>
+                              <option value="Manualni">Manualni</option>
+                          </select>
+                      </div>
+
+                      <div class="form-group">
+                          <label for="inptvrstagorivae">Vrsta goriva</label>
+                          <select class="form-control" id="inptvrstagorivae">
+                              <option value="">Odaberi vrstu goriva</option>
+                              <option value="Dizel">Dizel</option>
+                              <option value="Benzin">Benzin</option>
+                          </select>
+                      </div>
+                      <div class="form-group">
+                        <label for="inptkme">Prijeđeni kilometri</label>
+                        <input type="text" class="form-control" id="inptkme">
+                    </div>
+                    <div class="form-group">
+                      <label for="inptcijenae">Cijena ( u Eurima )</label>
+                      <input type="text" class="form-control" id="inptcijenae">
+                  </div>      
+                  <div class="form-group">
+                    <button type="button" onclick="modalcic()" class="btn btn-primary">Obrisi sliku</button>
+
+                </div>     
+              </div>
+
+            
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Odustani</button>
+            <button type="button" onclick="Spremi()" class="btn btn-primary">Uredi</button>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <div class="modal fade" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">              
+            <div class="modal-body">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <img src="" class="imagepreview" id="vecaSlika" style="width: 100%;">
+                <button type="button" class="btn btn-secondary float-left" id="btnPrev">&lt; Prethodna</button>
+                <button type="button" class="btn btn-secondary float-right" id="btnNext">Sljedeća &gt;</button>
+                
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="modal fade" id="prodaj-auto" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+          <div class="modal-header text-center">
+              <h5 class="modal-title" id="exampleModalLabel">Prodaj vozilo</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+          <div class="modal-body">
+              <div class="form-group">
+                  <label for="korisniciDropdown">Odaberite korisnika:</label>
+                  <select class="form-control" id="prodaj-korisniciDropdown" onchange="popuniPodatke()">
+                  </select>
+              </div>
+              <div class="form-group">
+                  <label for="oibInput">OIB:</label>
+                  <input type="text" class="form-control" id="oibInput" readonly>
+              </div>
+              <div class="form-group">
+                  <label for="adresaInput">Adresa:</label>
+                  <input type="text" class="form-control" id="adresaInput" readonly>
+              </div>
+              <div class="form-group">
+                  <label for="emailInput">Email:</label>
+                  <input type="email" class="form-control" id="emailInput" readonly>
+              </div>
+              <div class="form-group">
+                  <label for="telefonInput">Broj telefona:</label>
+                  <input type="tel" class="form-control" id="telefonInput" readonly>
+              </div>
+              <div class="form-group">
+                  <label for="placanjeDropdown1">Plaćanje:</label>
+                  <select class="form-control" id="placanjeDropdown1">
+                      <option value="gotovina">Gotovina</option>
+                      <option value="kartica">Kreditna kartica</option>
+                  </select>
+              </div>
+              <div class="form-group">
+                <label for="inptkcjena1">Konačna cijena (u eurima ) :</label>
+                <input type="text" class="form-control" id="inptkcjena1">
+            </div>
+            <div class="form-group d-none">
+              <label for="ddatum">dd</label>
+              <input type="text" class="form-control" id="ddatum">
+          </div>
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Odustani</button>
+              <button type="button" onclick="Prodaj()" class="btn btn-warning">Prodaj</button>
+          </div>
+      </div>
+  </div>
+</div>
+</div>
+
+
+
+<div class="modal fade" id="slike-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header text-center">
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="container" style="margin-left: 40px;">
+                    <div id="currentImages">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" onclick="Gotovo()" class="btn btn-primary">Gotovo</button>
+            </div>
+        </div>
+    </div>
+  </div>
+</div>
+  
+
+
+
+<div class="modal fade" id="iznajmi-auto" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+          <div class="modal-header text-center">
+              <h5 class="modal-title" id="exampleModalLabel">Iznajmi vozilo</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+          <div class="modal-body">
+              <div class="form-group">
+                  <label for="korisniciDropdown">Odaberite korisnika:</label>
+                  <select class="form-control" id="iznajmi-korisniciDropdown" onchange="popuniPodatke1()">
+                  </select>
+              </div>
+              <div class="form-group">
+                  <label for="oibInputnajam">OIB:</label>
+                  <input type="text" class="form-control" id="oibInputnajam" readonly>
+              </div>
+              <div class="form-group">
+                  <label for="adresaInputt">Adresa:</label>
+                  <input type="text" class="form-control" id="adresaInputt" readonly>
+              </div>
+              <div class="form-group">
+                  <label for="emailInputt">Email:</label>
+                  <input type="email" class="form-control" id="emailInputt" readonly>
+              </div>
+              <div class="form-group">
+                  <label for="telefonInputt">Broj telefona:</label>
+                  <input type="tel" class="form-control" id="telefonInputt" readonly>
+              </div>
+              <div class="form-group">
+                  <label for="placanjeDropdown2">Plaćanje:</label>
+                  <select class="form-control" id="placanjeDropdown2">
+                      <option value="gotovina">Gotovina</option>
+                      <option value="kartica">Kreditna kartica</option>
+                  </select>
+              </div>
+              <div class="form-group">
+                <label for="krajnajma2">Kraj najma ;</label>
+                <input type="text" class="form-control" id="krajnajma2">
+            </div>
+              <div class="form-group">
+                <label for="inptkcjena2">Cijena najma ( u eurima ) :</label>
+                <input type="text" class="form-control" id="inptkcjena2">
+            </div>
+            <div class="form-group d-none">
+              <label for="ddatum">dd</label>
+              <input type="text" class="form-control" id="ddatum">
+          </div>
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Odustani</button>
+              <button type="button" onclick="Iznajmi()" class="btn btn-success">Iznajmi</button>
+          </div>
+      </div>
+  </div>
+</div>
+<div class="modal fade" id="prekini-najam" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+          <div class="modal-header text-center d-flex flex-column align-items-center">
+              <h5 class="modal-title" style="font-size: 30px;" id="exampleModalLabel">Prekini najam</h5>       
+                  <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+          <div class="modal-body d-flex flex-column align-items-center">
+              <div class="form-group">
+                <p style="font-size: 20px; text-align: center;">Jeste li sigurni da želite prekinuti najam?</p>
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Odustani</button>
+              <button type="button" onclick="PrekiniNajam()" class="btn btn-secondary">Prekini najam</button>
+          </div>
+      </div>
+  </div>
+</div>
+</div>
+<div class="modal fade" id="obrisi-vozilo" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+          <div class="modal-header text-center d-flex flex-column align-items-center">
+              <h5 class="modal-title" style="font-size: 30px;" id="exampleModalLabel">Obriši vozilo</h5>       
+                  <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+          <div class="modal-body d-flex flex-column align-items-center">
+              <div class="form-group">
+                <p style="font-size: 30px;">Jeste li sigurni da želite obrisati ovo vozilo?</p>
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Odustani</button>
+              <button type="button" onclick="obrisiVozilo()" class="btn btn-danger">Obriši vozilo</button>
+          </div>
+      </div>
+  </div>
+</div>
+</div>
+</div>
+
+
+<div class="modal fade" id="myAutoCloseModal2" tabindex="-1" role="dialog" aria-labelledby="autoCloseModalLabel" aria-hidden="true" data-backdrop="false">
+    <div class="modal-dialog modal-dialog-left" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="autoCloseModalLabel">Nisu sva polja forme popunjena<i style="color: red; margin-left: 150px;" class="fas fa-solid fa-exclamation"></i></h5>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+      <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+      
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+          apiKey: "AIzaSyAxBP5ggmugNV6Yt_wZQQxjjbph6BXgP5I",
+          authDomain: "autokuca-2944c.firebaseapp.com",
+          databaseURL: "https://autokuca-2944c-default-rtdb.europe-west1.firebasedatabase.app",
+          projectId: "autokuca-2944c",
+          storageBucket: "autokuca-2944c.appspot.com",
+          messagingSenderId: "610603306309",
+          appId: "1:610603306309:web:05da495e0555cb4001c22c"
+        };
+      
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+      </script>
+
+      <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/locales/bootstrap-datepicker.hr.min.js"></script>
+    <script src="js/firebase_config.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="js/login.js"></script>
+    <script src="js/vozilo.js"></script>
+
+  </body>
+  
+  
+
+
+</html>

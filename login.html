@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="assets/plugins/bootstrap-4.6.1-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/plugins/fontawesome-free-5.15.4-web/css/all.min.css">
+    <title>AK-PIN - Login</title>
+  </head>
+  
+  <body>
+  
+    <script src="assets/plugins/jquery/jquery-3.6.0.min.js"></script>
+    <script src="assets/plugins/bootstrap-4.6.1-dist/js/bootstrap.bundle.min.js"></script>
+
+    <body style="background-color: #f7FFF7">
+
+      <div class="custom-container" style="width: 400px; height: 400px;">
+        <h1 style="text-align: center; color: white; font-size: 30px; font-family: Tahoma ;">Auto kuća PIN</h1>
+        <h2 style="text-align: center; color: white; font-size: 25px; font-family: Tahoma">administracija</h2>
+        <p style="text-align: center; margin-top: 9px; color: white; font-size: 15px; font-family: Tahoma">Unesite admin korisničke podatke</p>
+        <form id="login-form" class="d-flex flex-column align-items-center" action="#">                           
+            <div class="form-group">
+                <label for="email" style="color:white">Username:</label><br>
+                <input type="text" name="email" id="email" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="password" style="color: white;">Lozinka:</label><br>
+                <input type="password" name="password" id="password" class="form-control">
+            </div>  
+            <div id="error-message" style="color: rgb(255, 255, 255); display: none; font-size: 15px;">Uneseni su krivi podaci.</div>                          
+            <div class="form-group">
+                <button type="button" style="margin-top: 20px;" class="btn btn-primary" onclick="Login()">Prijavi se</button>
+            </div>
+        </form>
+    </div>
+    
+      <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+      <script src="js/firebase_config.js"></script>
+      <script src="js/login.js"></script>
+  </body>
+
+  <style>
+    .custom-container {
+          background-color: 	#606060;
+          border: 2px solid #606060;
+          border-radius: 15px;
+          padding: 20px;
+          max-width: 600px;
+    }
+
+    body {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  
+  </style>
+</html>

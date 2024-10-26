@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="assets/plugins/bootstrap-4.6.1-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/plugins/fontawesome-free-5.15.4-web/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+
+    <title>AK-PIN - Profil korisnika</title>
+  </head>
+    <script src="assets/plugins/jquery/jquery-3.6.0.min.js"></script>
+    <script src="assets/plugins/bootstrap-4.6.1-dist/js/bootstrap.bundle.min.js"></script>
+
+    <body style="background-color: #F8F8F8;">
+        <nav class="navbar navbar-expand-lg" style="background-color: 	#606060">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <a style="color: white;" class="navbar-brand" href="#"><img src="img/logo.png"></a>
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+              <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item active">
+                  <a class="nav-link" style="color: white;font-size: 22px;" href="/glavnastranica.html">Dostupna vozila <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+                  <a class="nav-link" style="color: white; font-size: 22px;"  href="/iznajmljenavozila.html">Iznajmljena vozila <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" style="color: white; font-size: 22px;" href="/prodanavozila.html">Prodana vozila <span class="sr-only">(current)</span></a>
+                  </li>
+                  <li class="nav-item active">
+                    <a class="nav-link" style="color: white; font-size: 22px;" href="/korisnici.html">Korisnici<span class="sr-only">(current)</span></a>
+                  </li>
+     
+                </li>
+              </ul>
+          
+              <ul class="navbar-nav ml-auto">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-lg" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: white;">
+                        <i class="fas fa-user"></i> 
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <button class="dropdown-item" data-toggle="modal" data-target="#modal1" type="button">Odjava</button>    
+                    </div>
+                </div>
+            </ul>
+            
+            </div>
+            <div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog d-flex justify-content-center align-items-center" role="document">
+                  <div class="modal-content">
+                    <div class=" d-flex justify-content-center align-items-center" style="margin-top: 30px; margin-bottom: 20px;">
+                      <h5 class="modal-title" id="exampleModalLabel">Odjava</h5>
+                    </div>
+                    <div class="d-flex justify-content-center align-items-center">
+                      <p>Jeste li sigurni da se želite odjaviti?</p>
+                    </div>
+                    <div class="modal-body d-flex justify-content-center">
+                      <button type="button" class="btn btn-secondary mr-2" data-dismiss="modal">Zatvori</button>
+                      <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="Logout()">Odjavi se</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </nav>
+
+          <div class="container" style="background-color: #E8E8E8; margin-top: 30px;">
+            <div class="row">
+              <div class="col-5 justify-content-center align-items-center">
+                <img src="/img/user.png" alt="Slika" class="img" style="width: 60%; margin-left: 80px; margin-top: 20px;">
+                <div class="row" style="margin-top: 30px;">
+                  <div class="col-6">
+                    <button type="button" onclick="uredik()" data-toggle="modal" data-target="#iznajmi-auto" class="btn btn-primary btn-lg btn-block" id="uredik">Uredi korisnika</button>
+
+                  </div>
+                  <div class="col-6">
+                    <button type="button" onclick="obrisik()" data-toggle="modal" data-target="#iznajmi-auto" class="btn btn-danger btn-lg btn-block" id="obrisik">Obriši korisnika</button>
+
+                  </div>
+                </div>
+              </div>
+              <div class="col-7" id="vozila-container">
+                <h1 id="ip" style="margin-top: 20px;"></h1>
+                <div class="row" style="margin-top: 20px;">
+                  <div class="col-4">
+                    <p style="font-size: 25px; text-align: left;">OIB:</p>
+                  </div>
+                  <div class="col-8">
+                    <p id="oib" style="font-size: 25px; text-align: left;"></p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-4">
+                    <p style="font-size: 25px; text-align: left;">Email:</p>
+                  </div>
+                  <div class="col-8">
+                    <p id="email" style="font-size: 25px; text-align: left;"></p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-4">
+                    <p style="font-size: 25px; text-align: left;">Adresa:</p>
+                  </div>
+                  <div class="col-8">
+                    <p id="adresa" style="font-size: 25px; text-align: left;"></p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-4">
+                    <p style="font-size: 25px; text-align: left;">Telefon:</p>
+                  </div>
+                  <div class="col-8">
+                    <p id="telefon" style="font-size: 25px; text-align: left;"></p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-4">
+                    <p style="font-size: 25px; text-align: left;">Evidencija vozila :</p>
+                  </div>
+                  <div class="col-8">
+                    <p id="bezveze" style="font-size: 25px; text-align: left;"></p>
+                  </div>              
+                </div>               
+              </div>             
+            </div>
+
+          </div>
+          
+          <div class="modal fade" id="uredi-korisnika" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Uredi korisnika</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <form id="modal-form">
+                    <div class="form-group">
+                      <label for="ime">Ime</label>
+                      <input type="text" class="form-control" id="ime" placeholder="Unesite ime">
+                    </div>
+                    <div class="form-group">
+                      <label for="prezime">Prezime</label>
+                      <input type="text" class="form-control" id="prezime" placeholder="Unesite prezime">
+                    </div>
+                    <div class="form-group">
+                      <label for="adresaa">Adresa</label>
+                      <input type="text" class="form-control" id="adresaa" placeholder="Unesite adresu">
+                    </div>
+                    <div class="form-group">
+                      <label for="telefonn">Broj telefona</label>
+                      <input type="text" class="form-control" id="telefonn" placeholder="Unesite broj telefona">
+                    </div>
+                    <div class="form-group">
+                      <label for="emaill">Email</label>
+                      <input type="email" class="form-control" id="emaill" placeholder="Unesite email">
+                    </div>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Zatvori</button>
+                  <button type="button" class="btn btn-primary" onclick="spremi()">Spremi</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        
+          <div class="modal fade" id="obrisi-korisnika" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header text-center d-flex flex-column align-items-center">
+                        <h5 class="modal-title" style="font-size: 30px;" id="exampleModalLabel">Obriši korisnika</h5>       
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body d-flex flex-column align-items-center">
+                        <div class="form-group">
+                          <p style="font-size: 30px;">Jeste li sigurni da želite obrisati ovog korisnika?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Odustani</button>
+                        <button type="button" onclick="obrisi()" class="btn btn-danger">Obriši vozilo</button>
+                    </div>
+                </div>
+            </div>
+          </div>                               
+      <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+      
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+          apiKey: "AIzaSyAxBP5ggmugNV6Yt_wZQQxjjbph6BXgP5I",
+          authDomain: "autokuca-2944c.firebaseapp.com",
+          databaseURL: "https://autokuca-2944c-default-rtdb.europe-west1.firebasedatabase.app",
+          projectId: "autokuca-2944c",
+          storageBucket: "autokuca-2944c.appspot.com",
+          messagingSenderId: "610603306309",
+          appId: "1:610603306309:web:05da495e0555cb4001c22c"
+        };
+      
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+      </script>
+
+      <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+    <script src="js/firebase_config.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="js/login.js"></script>
+    <script src="js/korisnik.js"></script>
+
+  </body>
+  
+  
+
+
+</html>

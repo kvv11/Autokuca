@@ -1,0 +1,22 @@
+{
+	"playlist": [
+		{
+			"title": "Babylon",
+			"author": "Bonnie Stafford",
+			"genre": "Indie Rock",
+			"duration": 210
+		},
+		{
+			"title": "Something To Talk About",
+			"author": "Jimmy Rio",
+			"genre": "Electro House",
+			"duration": 234
+		},
+		{
+			"title": "Blue",
+			"author": "Bob Chapman",
+			"genre": "Alternative Country",
+			"duration": 243
+		}
+	]
+}

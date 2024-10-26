@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="assets/plugins/bootstrap-4.6.1-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/plugins/fontawesome-free-5.15.4-web/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-Gn538bU0V1/bH9RQm6Xds15Jskuk9QcVxVR+ttTHq45I58iucvf0B/uGzZGapY6xZwM5l2d6n7Pz0s3ePpRfMIig==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="/css/style.css">
+    <title>AK-PIN - Korisnici</title>
+  </head>
+  
+  <body >
+  
+    <script src="assets/plugins/jquery/jquery-3.6.0.min.js"></script>
+    <script src="assets/plugins/bootstrap-4.6.1-dist/js/bootstrap.bundle.min.js"></script>
+
+    <body>
+      <nav class="navbar navbar-expand-lg" style="background-color: 	#606060">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <a style="color: white;" class="navbar-brand" href="#"><img src="img/logo.png"></a>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+          <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="nav-item active">
+              <a class="nav-link" style="color: white;font-size: 22px;" href="/glavnastranica.html">Dostupna vozila <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" style="color: white; font-size: 22px;"  href="/iznajmljenavozila.html">Iznajmljena vozila <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" style="color: white; font-size: 22px;" href="/prodanavozila.html">Prodana vozila <span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item active">
+                <a class="nav-link font-weight-bold" style="color: black; font-size: 22px;" href="/korisnici.html">Korisnici<span class="sr-only">(current)</span></a>
+              </li>
+ 
+            </li>
+          </ul>
+      
+          <ul class="navbar-nav ml-auto">
+            <div class="btn-group">
+                <button type="button" class="btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: white;";>
+                  <i class="fas fa-user"></i> 
+                </button>
+                <div class="dropdown-menu dropdown-menu-right">
+                  <button class="dropdown-item" data-toggle="modal" data-target="#modal1" type="button">Odjava</button>    
+                        
+                </div>
+              </div>
+              
+              </div>
+              
+          </ul>
+        </div>
+        <div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog d-flex justify-content-center align-items-center" role="document">
+              <div class="modal-content">
+                <div class=" d-flex justify-content-center align-items-center" style="margin-top: 30px; margin-bottom: 20px;">
+                  <h5 class="modal-title" id="exampleModalLabel">Odjava</h5>
+                </div>
+                <div class="d-flex justify-content-center align-items-center">
+                  <p>Jeste li sigurni da se želite odjaviti?</p>
+                </div>
+                <div class="modal-body d-flex justify-content-center">
+                  <button type="button" class="btn btn-secondary mr-2" data-dismiss="modal">Zatvori</button>
+                  <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="Logout()">Odjavi se</button>
+                </div>
+              </div>
+            </div>
+          </div>
+      </nav>
+      <h1 class="display-3 text-center">Korisnici</h1>
+      <p class="display-3 text-center" style="font-size: 25px;">Pretraga korisnika</p>
+      <div class="container mt-3">
+        <div class="row justify-content-center" style="margin-bottom: 20px;">
+          <div class="col-md-6">
+            <input type="search" class="form-control rounded" id="live-search"
+            placeholder="Upišite korisnika za pretragu..." aria-label="Search" aria-describedby="search-addon">
+      
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+      <div class="container">
+        <button class="btn btn-sm btn-success" data-toggle="modal" data-target="#dodaj-korisnika" style="font-size: 20px;">Dodaj korisnika <i class="fas fas fa-user-alt	"></i></button>
+        <i class="fa-solid fa-circle-exclamation"></i>
+        <table class="table  table-bordered table-hover" id="tablicak">
+            <thead class="table" style="background-color: #606060;">
+              <tr style="color: white;">
+              
+                 <th>Ime</th>
+                 <th>Prezime</th>
+                 <th>email</th>
+                 <th>Evidencija vozila : </th>
+               </tr>
+             </thead>
+             <tbody>
+             </tbody>
+          </table>
+      </div>
+
+
+
+
+
+
+
+      <div class="modal fade" id="dodaj-korisnika" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content ">
+              <div class="modal-header text-center">
+                <h5 class="modal-title" id="exampleModalLabel">Dodaj novog korisnika</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                  <div class="form-group">
+                    <label for="imeInput">Ime:</label>
+                    <input type="text" class="form-control" id="imeInput">
+                </div>
+                <div class="form-group">
+                  <label for="prezimeInput">Prezime:</label>
+                  <input type="text" class="form-control" id="prezimeInput">
+              </div>
+                  <div class="form-group">
+                    <label for="oibInput">OIB:</label>
+                    <input type="text" class="form-control" id="oibInput">
+                </div>
+                <div class="form-group">
+                    <label for="adresaInput">Adresa:</label>
+                    <input type="text" class="form-control" id="adresaInput">
+                </div>
+                <div class="form-group">
+                    <label for="emailInput">Email:</label>
+                    <input type="email" class="form-control" id="emailInput">
+                </div>
+                <div class="form-group">
+                    <label for="telefonInput">Broj telefona:</label>
+                    <input type="tel" class="form-control" id="telefonInput">
+                </div>
+              </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-outline-secondary"  data-dismiss="modal">Odustani</button>
+                  <button type="button" onclick="dodajKorisnika()" class="btn btn-outline-success">Dodaj</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-xl">
+          <div class="modal-content">              
+              <div class="modal-body">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <img src="" class="imagepreview" style="width: 100%;" >
+              </div>
+          </div>
+      </div>
+  </div>
+
+  <div class="modal fade" id="korisnikdodan" tabindex="-1" role="dialog" aria-labelledby="autoCloseModalLabel" aria-hidden="true" data-backdrop="false">
+    <div class="modal-dialog modal-dialog-left" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="autoCloseModalLabel">Korisnik je uspješno dodan!</h5>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+      <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+      
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+          apiKey: "AIzaSyAxBP5ggmugNV6Yt_wZQQxjjbph6BXgP5I",
+          authDomain: "autokuca-2944c.firebaseapp.com",
+          databaseURL: "https://autokuca-2944c-default-rtdb.europe-west1.firebasedatabase.app",
+          projectId: "autokuca-2944c",
+          storageBucket: "autokuca-2944c.appspot.com",
+          messagingSenderId: "610603306309",
+          appId: "1:610603306309:web:05da495e0555cb4001c22c"
+        };
+      
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+      </script>
+
+      <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <script src="js/firebase_config.js"></script>
+    <script src="js/login.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="js/korisnici.js"></script>
+
+
+  </body>
+  
+  
+
+
+</html>

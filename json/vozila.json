@@ -1,0 +1,58 @@
+{
+    "Vozila":[
+    {
+        "voib":"0000",
+        "vstanje":"Na stanju",
+        "cijena":"40000",
+        "marka":"Mercedes Benz",
+        "model":"C klasa AMG",
+        "godina_proizvodnje":"2022",
+        "vlasnik":"Auto kuća PIN",
+        "boja":"Boja",
+        "stanje":"Polovno",
+        "registracija":"23.1.2024.",
+        "snagamotora":"110kw",
+        "vrstagoriva":"Benzin",
+        "obujam":"1493cm3",
+        "vrata":"5",
+        "oblikk":"Terensko vozilo",
+        "mjenjac":"Automatski",
+        "km":"11000",
+        "album_fotografija": [
+       "mercedes1.png",
+       "mercedes2.png",
+       "mercedes3.png",
+       "mercedes4.png"
+            
+          ]
+    }
+],
+"Korisnici":[
+    {
+        "ime":"AUTO",
+        "prezime":"KUĆA PIN",
+        "oib":"0000",
+        "email":"autokuca@pin.hr",
+        "kstanje":""
+    },
+    {
+        "ime":"Karlo",
+        "prezime":"Veletić",
+        "oib":"1111",
+        "email":"karloveletic@gmail.com",
+        "adresa":"Matije Gupca 27",
+        "telefon":"096 726 265",
+        "kstanje" :""
+    },
+    {
+        "ime":"Lovro",
+        "prezime":"Ivić",
+        "oib":"2222",
+        "email":"lovroivic@gmail.com",
+        "adresa":"Ante Starčevića 12",
+        "telefon":"098 263 256",
+        "kstanje":""
+    }
+    
+]
+}

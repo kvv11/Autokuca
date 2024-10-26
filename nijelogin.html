@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="assets/plugins/bootstrap-4.6.1-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/plugins/fontawesome-free-5.15.4-web/css/all.min.css">
+    <title>AK-PIN - Login error</title>
+  </head>
+  
+  <body>
+  
+    <script src="assets/plugins/jquery/jquery-3.6.0.min.js"></script>
+    <script src="assets/plugins/bootstrap-4.6.1-dist/js/bootstrap.bundle.min.js"></script>
+
+    <body style="background-color: #f7FFF7">
+
+      <div class="custom-container d-flex flex-column align-items-center" style="width: 400px; height: 400px;">
+        <h2 style="text-align: center;"><i style="color: red; font-size: 80px; margin-top: 30px;" class="fas fa-regular fa-ban"></i></h2>
+        <h1 style="text-align: center; margin-top: 15px; color: white">Pregled stranice zabranjen</h1>
+        <p style="text-align: center; color: white; font-size: 20px;">Prijavite se kako bi vidjeli sadržaj</p>
+        <button type="button" style="margin-top: 20px;" class="btn btn-primary" onclick="nalogin()">Prijavi se</button>
+
+
+
+      </div>
+      <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+      <script src="js/firebase_config.js"></script>
+      <script src="js/login.js"></script>
+  </body>
+
+  <style>
+    .custom-container {
+          background-color: 	#606060;
+          border: 2px solid #606060;
+          border-radius: 15px;
+          padding: 20px;
+          max-width: 600px;
+    }
+
+    body {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  
+  </style>
+</html>

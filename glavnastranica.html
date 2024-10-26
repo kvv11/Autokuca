@@ -1,0 +1,463 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="assets/plugins/bootstrap-4.6.1-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/plugins/fontawesome-free-5.15.4-web/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <title>AK-PIN - Dostupna vozila</title>
+    
+  </head>
+  
+  
+    <script src="assets/plugins/jquery/jquery-3.6.0.min.js"></script>
+    <script src="assets/plugins/bootstrap-4.6.1-dist/js/bootstrap.bundle.min.js"></script>
+
+    <body>
+      <nav class="navbar navbar-expand-lg" style="background-color: 	#606060">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <a style="color: white;" class="navbar-brand" href="#"><img src="img/logo.png"></a>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+          <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="nav-item active">
+              <a class="nav-link font-weight-bold" style="color: black;font-size: 22px;" href="/glavnastranica.html">Dostupna vozila <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" style="color: white; font-size: 22px;"  href="/iznajmljenavozila.html">Iznajmljena vozila <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" style="color: white; font-size: 22px;" href="/prodanavozila.html">Prodana vozila <span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item active">
+                <a class="nav-link" style="color: white; font-size: 22px;" href="/korisnici.html">Korisnici<span class="sr-only">(current)</span></a>
+              </li>
+ 
+            </li>
+          </ul>
+      
+          <ul class="navbar-nav ml-auto">
+            <div class="btn-group">
+                <button type="button" class="btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: white;";>
+                  <i class="fas fa-user"></i> 
+                </button>
+                <div class="dropdown-menu dropdown-menu-right">
+                  <button class="dropdown-item" data-toggle="modal" data-target="#modal1" type="button">Odjava</button>    
+                        
+                </div>
+              </div>
+              
+              </div>
+              
+          </ul>
+        </div>
+        <div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog d-flex justify-content-center align-items-center" role="document">
+              <div class="modal-content">
+                <div class=" d-flex justify-content-center align-items-center" style="margin-top: 30px; margin-bottom: 20px;">
+                  <h5 class="modal-title" id="exampleModalLabel">Odjava</h5>
+                </div>
+                <div class="d-flex justify-content-center align-items-center">
+                  <p>Jeste li sigurni da se želite odjaviti?</p>
+                </div>
+                <div class="modal-body d-flex justify-content-center">
+                  <button type="button" class="btn btn-secondary mr-2" data-dismiss="modal">Zatvori</button>
+                  <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="Logout()">Odjavi se</button>
+                </div>
+              </div>
+            </div>
+          </div>
+      </nav>
+      
+      <h1 class="display-3 text-center">Dostupna vozila</h1>
+      <p class="display-3 text-center" style="font-size: 25px;">Pretraga vozila</p>
+      
+      <div class="container mt-3">
+        <div class="row justify-content-center" style="margin-bottom: 20px;">
+          <div class="col-md-6">
+            <input type="search" class="form-control rounded" id="live-search"
+            placeholder="Upišite vozilo za pretragu..." aria-label="Search" aria-describedby="search-addon">
+          </div>
+        </div>
+            <div>
+                                                                           
+              <div class="container filter-container d-none" style="background-color: white;">
+                <div class="row mb-3">
+                    <div class="col-md-3">
+                        <label for="kmFilterMin" class="form-label">Min. kilometri:</label>
+                        <input type="number" class="form-control" id="kmFilterMin" placeholder="Min.">
+                    </div>
+            
+                    <div class="col-md-3">
+                        <label for="kmFilterMax" class="form-label">Max. kilometri:</label>
+                        <input type="number" class="form-control" id="kmFilterMax" placeholder="Max.">
+                    </div>
+            
+                    <div class="col-md-3">
+                        <label for="snagaFilterMin" class="form-label">Min. snaga (kW):</label>
+                        <input type="number" class="form-control" id="snagaFilterMin" placeholder="Min.">
+                    </div>
+            
+                    <div class="col-md-3">
+                        <label for="snagaFilterMax" class="form-label">Max. snaga (kW):</label>
+                        <input type="number" class="form-control" id="snagaFilterMax" placeholder="Max.">
+                    </div>
+                </div>
+            
+                <div class="row mb-3">
+                    <div class="col-md-3">
+                        <label for="obujamFilterMin" class="form-label">Min. obujam (cm³):</label>
+                        <input type="number" class="form-control" id="obujamFilterMin" placeholder="Min.">
+                    </div>
+            
+                    <div class="col-md-3">
+                        <label for="obujamFilterMax" class="form-label">Max. obujam (cm³):</label>
+                        <input type="number" class="form-control" id="obujamFilterMax" placeholder="Max.">
+                    </div>
+                    
+                    <div class="col-md-3">
+                        <label for="cijenaFilterMin" class="form-label">Min. cijena:</label>
+                        <input type="number" class="form-control" id="cijenaFilterMin" placeholder="Min.">
+                    </div>
+            
+                    <div class="col-md-3">
+                        <label for="cijenaFilterMax" class="form-label">Max. cijena:</label>
+                        <input type="number" class="form-control" id="cijenaFilterMax" placeholder="Max.">
+                    </div>
+                </div>
+            
+                <div class="row mb-3">
+                    <div class="col-md-3">
+                        <label for="registracijaFilter" class="form-label">Registriran:</label>
+                        <select class="form-control" id="registracijaFilter">
+                            <option value="sve">Sve</option>
+                            <option value="prosao">Neregistriran</option>
+                            <option value="nijeProsao">Registriran</option>
+                        </select>
+                    </div>
+            
+                    <div class="col-md-3">
+                        <label for="gorivoFilter" class="form-label">Vrsta goriva:</label>
+                        <select class="form-control" id="gorivoFilter">
+                            <option value="sve">Sve</option>
+                            <option value="Benzin">Benzin</option>
+                            <option value="Dizel">Dizel</option>
+                        </select>
+                    </div>
+            
+                    <div class="col-md-3">
+                        <label for="mjenjacFilter" class="form-label">Mjenjač:</label>
+                        <select class="form-control" id="mjenjacFilter">
+                            <option value="sve">Sve</option>
+                            <option value="Manualni">Manualni</option>
+                            <option value="Automatski">Automatski</option>
+                        </select>
+                    </div>
+            
+                    <div class="col-md-3 ">
+                        <label for="vrataFilter">Broj vrata:</label>
+                        <select class="form-control" id="vrataFilter">
+                            <option value="sve">Sve</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                      
+                    </div>
+                </div>
+            </div>
+            
+            
+              
+      
+            </div>
+          </div>
+        </div>
+      
+      </div>
+      </div>
+      
+      </div>
+      
+      
+      <div class="container-fluid mt-3">
+        <div class="row">
+          <div class="col-10">
+            <button class="btn btn-lg btn-success" data-toggle="modal" data-target="#dodaj-auto" style="font-size: 20px; margin-left: 348px;">Dodaj Vozilo <i class="fas fas fa-car-alt"></i></button>
+            <button id="toggleFiltersBtn" class="btn btn-primary float-right btn-lg">Prikaži filtere</button>
+          </div>
+        </div>
+      
+        <div class="row mt-3">
+          <div class="col-8 mx-auto">
+            <table class="table table-hover table-striped" id="tablica">
+              <thead class="table" style="background-color: #606060; color: white;">
+                <tr>
+                  <th>Marka</th>
+                  <th>Model</th>
+                  <th>Registriran do:</th>
+                  <th>Km</th>
+                  <th >Snaga</th>
+                  <th>Obujam motora</th>
+                  <th>Gorivo</th>
+                  <th>Mjenjač</th>
+                  <th>Vrata</th>
+                  <th>Cijena</th>
+                  <th>Datum prijave</th>
+                  <th>Slika</th>
+                </tr>
+              </thead>
+              <tbody>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      
+      <div class="modal fade" id="modal-ucitavanja" tabindex="-1" role="dialog" aria-labelledby="autoCloseModalLabel" aria-hidden="true" data-backdrop="false">
+        <div class="modal-dialog modal-dialog-left" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="autoCloseModalLabel">Vozilo se dodaje....</h5>
+              <div class="spinner-border" role="status">
+                <span class="sr-only">Loading...</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal fade" id="dodaj-auto" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content ">
+              <div class="modal-header text-center">
+                <h5 class="modal-title" id="exampleModalLabel">Dodaj novo vozilo</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="inptmarka">Marka</label>
+                                <div class="input-group">
+                                    <select class="form-control" id="inptmarka" onchange="custommarka(this)">
+                                        <option value="">Odaberi marku</option>
+                                        <option value="Alfa Romeo">Alfa Romeo</option>
+                                        <option value="Aston Martin">Aston Martin</option>
+                                        <option value="Audi">Audi</option>
+                                        <option value="Bentley">Bentley</option>
+                                        <option value="BMW">BMW</option>
+                                        <option value="Bugatti">Bugatti</option>
+                                        <option value="Cadillac">Cadillac</option>
+                                        <option value="Chevrolet">Chevrolet</option>
+                                        <option value="Citroen">Citroen</option>
+                                        <option value="Dacia">Dacia</option>
+                                        <option value="Dodge">Dodge</option>
+                                        <option value="Ferrari">Ferrari</option>
+                                        <option value="Fiat">Fiat</option>
+                                        <option value="Ford">Ford</option>
+                                        <option value="Honda">Honda</option>
+                                        <option value="Hyundai">Hyundai</option>
+                                        <option value="Infinity">Infinity</option>
+                                        <option value="Isuzu">Isuzu</option>
+                                        <option value="Jaguar">Jaguar</option>
+                                        <option value="Jeep">Jeep</option>
+                                        <option value="Kia">Kia</option>
+                                        <option value="Koenigsegg">Koenigsegg</option>
+                                        <option value="Lada">Lada</option>
+                                        <option value="Lamborghini">Lamborghini</option>
+                                        <option value="Land Rover">Land Rover</option>
+                                        <option value="Lancia">Lancia</option>
+                                        <option value="Lexus">Lexus</option>
+                                        <option value="Lotus">Lotus</option>
+                                        <option value="Maserati">Maserati</option>
+                                        <option value="Mazda">Mazda</option>
+                                        <option value="McLaren">McLaren</option>
+                                        <option value="Mercedes">Mercedes</option>
+                                        <option value="Mitsubischi">Mitsubischi</option>
+                                        <option value="Nissan">Nissan</option>
+                                        <option value="Opel">Opel</option>
+                                        <option value="Pagani">Pagani</option>
+                                        <option value="Peugeot">Peugeot</option>
+                                        <option value="Porsche">Porsche</option>
+                                        <option value="Renault">Renault</option>
+                                        <option value="Rimac">Rimac</option>
+                                        <option value="Rolls-Royce">Rolls-Royce</option>
+                                        <option value="Smart">Smart</option>
+                                        <option value="Suzuki">Suzuki</option>
+                                        <option value="Suzuki">Škoda</option>
+                                        <option value="Tesla">Tesla</option>
+                                        <option value="Toyota">Toyota</option>
+                                        <option value="Volkswagen">Volkswagen</option>
+                                        <option value="Volvo">Volvo</option>
+                                        <option value="other">Drugo..</option>
+                                    </select>
+                                    <div id="ccustommarka" class="input-group-append" style="display: none;">
+                                        <input type="text" class="form-control" id="inptcustommarka" placeholder="Unesite vlastitu marku">
+                                    </div>
+                                </div>
+                            </div>
+    
+                            <div class="form-group">
+                                <label for="inptgodina_proizvodnje">Godina proizvodnje :</label>
+                                <input type="text" class="form-control" id="inptgodina_proizvodnje">
+                            </div>
+    
+                            <div class="form-group">
+                                <label for="inptsnagamotora">Snaga motora ( kW )</label>
+                                <input type="text" class="form-control" id="inptsnagamotora">
+                            </div>
+    
+                            <div class="form-group">
+                                <label for="inptvrata">Broj vrata</label>
+                                <select class="form-control" id="inptvrata">
+                                    <option value="">Odaberi broj vrata</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                </select>
+                            </div>
+    
+                            <div class="form-group">
+                                <label for="inptboja">Boja</label>
+                                <select class="form-control" id="inptboja">
+                                    <option value="">Odaberi boju</option>
+                                    <option value="Bijela">Bijela</option>
+                                    <option value="Crna">Crna</option>
+                                    <option value="Siva">Siva</option>
+                                    <option value="Crvena">Crvena</option>
+                                    <option value="Zelena">Zelena</option>
+                                    <option value="Ljubičasta">Ljubičasta</option>
+                                    <option value="Plava">Plava</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                              <label for="inptregistracija">Registriran do:</label>
+                              <input type="text" class="form-control" id="inptregistracija">
+                          </div>
+                          <div class="form-group">
+                            <label for="inptoblikk">Oblik karoserije</label>
+                            <select class="form-control" id="inptoblikk">
+                                <option value="Sedan">Sedan</option>
+                                <option value="Coupe">Coupe</option>
+                                <option value="Karavan">Karavan</option>
+                                <option value="Sedan">SUV</option>
+                                <option value="Sedan">Hatchback</option>
+
+
+                            </select>
+                        </div>
+                  
+                          <div class="form-group">
+                            <label for="files">Dodaj slike vozila</label>
+                            <input type="file" name="files[]" multiple class="form-control-file" id="files">
+                        </div>
+                        </div>
+    
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="inptmodel">Model</label>
+                                <input type="text" class="form-control" id="inptmodel">
+                            </div>
+    
+                            <div class="form-group">
+                                <label for="inptstanje">Stanje</label>
+                                <select class="form-control" id="inptstanje">
+                                    <option value="">Odaberi stanje vozila</option>
+                                    <option value="Novo">Novo</option>
+                                    <option value="Rabljeno">Rabljeno</option>
+                                </select>
+                            </div>
+    
+                            <div class="form-group">
+                                <label for="inptobujam">Obujam (cm³)</label>
+                                <input type="text" class="form-control" id="inptobujam">
+                            </div>
+    
+                            <div class="form-group">
+                                <label for="inptmjenjac">Mjenjač</label>
+                                <select class="form-control" id="inptmjenjac">
+                                    <option value="">Odaberi vrstu mjenjača</option>
+                                    <option value="Automatski">Automatski</option>
+                                    <option value="Manualni">Manualni</option>
+                                </select>
+                            </div>
+    
+                            <div class="form-group">
+                                <label for="inptvrstagoriva">Vrsta goriva</label>
+                                <select class="form-control" id="inptvrstagoriva">
+                                    <option value="">Odaberi vrstu goriva</option>
+                                    <option value="Dizel">Dizel</option>
+                                    <option value="Benzin">Benzin</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                              <label for="inptkm">Prijeđeni kilometri</label>
+                              <input type="text" class="form-control" id="inptkm">
+                          </div>
+                          <div class="form-group">
+                            <label for="inptcijena">Cijena ( € )</label>
+                            <input type="text" class="form-control" id="inptcijena">
+                        </div>            
+                    </div>
+                    </div>           
+                </div>
+              
+    
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-outline-secondary"  data-dismiss="modal">Odustani</button>
+                  <button type="button" onclick="DodajAuto()" class="btn btn-outline-success">Dodaj</button>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="modal-upozorenja2" tabindex="-1" role="dialog" aria-labelledby="autoCloseModalLabel" aria-hidden="true" data-backdrop="false">
+  <div class="modal-dialog modal-dialog-left" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="autoCloseModalLabel">Nisu sva polja forme popunjena<i style="color: red; margin-left: 150px;" class="fas fa-solid fa-exclamation"></i></h5>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+      </div>
+      <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+      </script>
+     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/locales/bootstrap-datepicker.hr.min.js"></script>
+     <script src="js/firebase_config.js"></script>
+     <script src="js/login.js"></script>
+     <script src="js/dostupnavozila.js"></script>
+
+  </body>
+  <style>
+    .istice { background-color: orange; }
+    .istekla { background-color: red; }
+  </style>
+  
+</html>
+
+
+
+
+
+  
